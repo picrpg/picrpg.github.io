@@ -127,6 +127,7 @@
         
         $('#closepopup').click(function(){
             $('#popup').css('opacity','0');
+            setTimeout("function(){$('#popup').remove()};",2000);
         });
         
         $('#newsong').click(function(){
