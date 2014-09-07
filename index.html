@@ -1,0 +1,279 @@
+<head>
+    <script src="jquery-1.11.1.min.js"></script>
+    <title>fun</title>
+    <style>
+        button{
+            padding: 2px;
+            border: 1px solid black;
+            width: 100px;
+            height: 100px;
+            transition: 0.25s all;
+            background-size: 100% 100%;
+            margin: 5px;
+        }
+        #button{
+            background-image: url(photo.jpg);
+        }
+        #button2{
+            background-image: url(photo2.jpg)
+        }
+        #button3{
+            background-image: url(photo3.jpg)
+        }
+        #button4{
+            background-image: url(dendi.jpg)
+        }
+        #button5{
+            background-image: url(silversurfer.png);
+        }
+        button:hover{
+            cursor: pointer;
+        }
+        button:active{
+            transform: scale(0.95,0.95);
+        }
+        body{
+            transition: 0.25s all;
+        }
+        #p{
+            position: fixed;
+            bottom: 0px;
+            right: 10px;
+        }
+        #disablesong{
+            position: fixed;
+            bottom: 0px;
+            left: 10px;
+            transition: 0.25s all;
+        }
+        #disablesong:hover{
+            cursor: pointer;
+            transform: translate(5px, 0);
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<body>
+    <h2 id="title" align='center'><u>the best rpg</u></h2>
+    <div id="container" align="center">Level: <span id='level'>1</span></div><br>
+    <center><button id="button"></button></center>
+    <center><button id="button2"></button></center>
+    <center><button id="button3"></button></center>
+    <center><button id="button4"></button></center>
+    <center><button id="button5"></button></center>
+    <p id="p">epilepsy warning</p>
+    <audio autoplay id="audioswag"></audio>
+    <p id="disablesong">disable song</p>
+                
+    <script>
+        var someswag = Math.floor((Math.random() * 7) + 1);
+        var level = 1;
+        var num = Math.floor((Math.random() * 5) + 1);
+        var numswag = Math.floor((Math.random() * 5) + 1);
+        var titleswag = Math.floor((Math.random() * 6) + 1);
+        
+        $('#disablesong').click(function(){
+            $('audio').remove();
+            $('#disablesong').remove();
+        });
+        
+        switch(someswag){
+            case 1:
+                document.getElementById("audioswag").innerHTML = "<source src='Kalimba.wav' type='audio/wav'>"
+                break;
+            case 2:
+                document.getElementById("audioswag").innerHTML = "<source src='screaming song.mp3' type='audio/mpeg'>"
+                break;
+            case 3:
+                document.getElementById("audioswag").innerHTML = "<source src='showmeurbroobes.mp3' type='audio/mpeg'>"
+                break;
+            case 4:
+                document.getElementById("audioswag").innerHTML = "<source src='harmony.mp3' type='audio/mpeg'>"
+                break;
+            case 5:
+                document.getElementById("audioswag").innerHTML = "<source src='zombie.mp3' type='audio/mpeg'>"
+                break;
+            case 6:
+                document.getElementById("audioswag").innerHTML = "<source src='gaben.mp3' type='audio/mpeg'>"
+                break;
+            case 7:
+                document.getElementById("audioswag").innerHTML = "<source src='kawaiirap.mp3' type='audio/mpeg'>"
+                break;
+        }
+        
+        switch(titleswag){
+            case 1:
+                document.getElementById("title").innerHTML = "<u>the best rpg<u>";
+                break;
+            case 2:
+                document.getElementById("title").innerHTML = "<u>elder scrolls 6<u>";
+                break;
+            case 3:
+                document.getElementById("title").innerHTML = "<u>swagalicious<u>";
+                break;
+            case 4:
+                document.getElementById("title").innerHTML = "<u>aw shit nigga<u>";
+                break;
+            case 5:
+                document.getElementById("title").innerHTML = "<u>my parents are so proud<u>";
+                break;
+            case 6:
+                document.getElementById("title").innerHTML = "<u>epilepsy warning<u>";
+                break;
+        }
+        $(document).ready(function(){
+            $("#button2").hide();
+            $("#button3").hide();
+            $("#button4").hide();
+            $("#button5").hide();
+        });
+        
+        $('#button').click(function(){
+            level += 1;
+            document.getElementById('level').innerHTML = level;
+            num = Math.floor((Math.random() * 5) + 1);
+            switch(num){
+                case 1:
+                        $("body").css("background-color","green");
+                        break;
+                case 2:
+                        $("body").css("background-color","blue");
+                        break;
+                case 3:
+                        $("body").css("background-color","red");
+                        break;
+                case 4:
+                        $("body").css("background-color","white");
+                        break;
+                case 5:
+                        $("body").css("background-color","yellow");
+            }
+            if(level >= 100){
+                $("#button2").show();
+            }
+                        
+        });
+        
+        $('#button2').click(function(){
+            level += 2;
+            document.getElementById('level').innerHTML = level;
+            num = Math.floor((Math.random() * 5) + 1);
+            switch(num){
+                case 1:
+                        $("body").css("background-color","green");
+                        break;
+                case 2:
+                        $("body").css("background-color","blue");
+                        break;
+                case 3:
+                        $("body").css("background-color","red");
+                        break;
+                case 4:
+                        $("body").css("background-color","white");
+                        break;
+                case 5:
+                        $("body").css("background-color","yellow");
+            }
+            if(level >= 200){
+                $("#button3").show();
+            }
+        });
+        
+        $('#button3').click(function(){
+            level += 4;
+            document.getElementById('level').innerHTML = level;
+            num = Math.floor((Math.random() * 5) + 1);
+            switch(num){
+                case 1:
+                        $("body").css("background-color","green");
+                        break;
+                case 2:
+                        $("body").css("background-color","blue");
+                        break;
+                case 3:
+                        $("body").css("background-color","red");
+                        break;
+                case 4:
+                        $("body").css("background-color","white");
+                        break;
+                case 5:
+                        $("body").css("background-color","yellow");
+            }
+            if(level >= 400){
+                $("#button4").show();
+            }
+        });
+        
+        $('#button4').click(function(){
+            level += 8;
+            document.getElementById('level').innerHTML = level;
+            num = Math.floor((Math.random() * 5) + 1);
+            switch(num){
+                case 1:
+                        $("body").css("background-color","green");
+                        break;
+                case 2:
+                        $("body").css("background-color","blue");
+                        break;
+                case 3:
+                        $("body").css("background-color","red");
+                        break;
+                case 4:
+                        $("body").css("background-color","white");
+                        break;
+                case 5:
+                        $("body").css("background-color","yellow");
+            }
+            if(level >= 800){
+                $("#button4").show();
+            }
+        });
+        
+        $('#button5').click(function(){
+            level += 16;
+            document.getElementById('level').innerHTML = level;
+            num = Math.floor((Math.random() * 5) + 1);
+            switch(num){
+                case 1:
+                        $("body").css("background-color","green");
+                        break;
+                case 2:
+                        $("body").css("background-color","blue");
+                        break;
+                case 3:
+                        $("body").css("background-color","red");
+                        break;
+                case 4:
+                        $("body").css("background-color","white");
+                        break;
+                case 5:
+                        $("body").css("background-color","yellow");
+            }
+            if(level >= 1600){
+                $("#button5").show();
+            }
+        });
+            
+        function epilepsy(){
+            numswag = Math.floor((Math.random() * 5) + 1);
+            switch(numswag){
+                case 1:
+    
+                        break;
+                case 2:
+                        $("#p").css("color","blue");
+                        break;
+                case 3:
+                        $("#p").css("color","red");
+                        break;
+                case 4:
+                        $("#p").css("color","white");
+                        break;
+                case 5:
+                        $("#p").css("color","yellow");
+            }
+        }
+        setInterval("epilepsy()",1);
+    </script>
+</body>
