@@ -26,6 +26,9 @@
         #button5{
             background-image: url(silversurfer.png);
         }
+        #button6{
+            background-image: url(kappa.jpg);
+        }
         button:hover{
             cursor: pointer;
         }
@@ -51,6 +54,49 @@
             transform: translate(5px, 0);
             text-decoration: underline;
         }
+        #newsong{
+            position: fixed;
+            bottom: 20px;
+            left: 10px;
+            transition: 0.25s all;
+        }
+        #newsong:hover{
+            cursor: pointer;
+            transform: translate(5px, 0);
+            text-decoration: underline;
+        }
+        #popup{
+            position: fixed;
+            bottom: -380px;
+            background-color: #a4a4a4;
+            border: 1px solid black;
+            padding: 5px;
+            height: 400px;
+            left: 30%;
+            right: 30%;
+            overflow: hidden;
+            transition: 0.25s all;
+            box-shadow: 4px 4px 1px #000000;
+            border-radius: 25px;
+        }
+        #popup:hover{
+            transform: translate(0px,-100px);
+            cursor: pointer;
+        }
+        #closepopup{
+            position: absolute;
+            top: -10px;
+            right: 15px;
+            border: 1px solid black;
+            height: 15px;
+            width: 15px;
+            padding: 1px;
+            transition: 0.25s all;
+        }
+        #closepopup:hover{
+            transform: scale(1.1,1.1);
+            background-color: #868686;
+        }
     </style>
 </head>
 
@@ -62,9 +108,14 @@
     <center><button id="button3"></button></center>
     <center><button id="button4"></button></center>
     <center><button id="button5"></button></center>
+    <center><button id="button6"></button></center>
     <p id="p">epilepsy warning</p>
-    <audio autoplay id="audioswag"></audio>
-    <p id="disablesong">disable song</p>
+    <p id="disablesong">pause song</p>
+    <p id="newsong">new song</p>
+    <div id="popupcontainer" align="center">
+    <div id="popup" align="center"><u>hover over me</u><br><br>request music, titles, and pictures<br>by emailing acrospore@gmail.com<p id="closepopup">X</p></div>
+    </div>
+
                 
     <script>
         var someswag = Math.floor((Math.random() * 7) + 1);
@@ -72,35 +123,63 @@
         var num = Math.floor((Math.random() * 5) + 1);
         var numswag = Math.floor((Math.random() * 5) + 1);
         var titleswag = Math.floor((Math.random() * 6) + 1);
+        var songplaying = true;
         
-        $('#disablesong').click(function(){
-            $('audio').remove();
-            $('#disablesong').remove();
+        $('#closepopup').click(function(){
+            $('#popup').css('opacity','0');
         });
         
+        $('#newsong').click(function(){
+            newsong();
+            audioelement.play();
+            disablesong.innerHTML = "pause song";
+            songplaying = true;
+            audioelement.play();
+        });
+        
+        $('#disablesong').click(function(){
+            var disablesong = document.getElementById('disablesong');
+            if(songplaying == true){
+                disablesong.innerHTML = "play song";
+                songplaying = false;
+                audioelement.pause();
+            } else {
+                disablesong.innerHTML = "pause song";
+                songplaying = true;
+                audioelement.play();
+            }
+        });
+        
+        var audioelement = document.createElement('audio');
+        
+        function newsong(){
+            someswag = Math.floor((Math.random() * 7) + 1);
         switch(someswag){
             case 1:
-                document.getElementById("audioswag").innerHTML = "<source src='Kalimba.wav' type='audio/wav'>"
+                audioelement.setAttribute('src', 'Kalimba.wav');
                 break;
             case 2:
-                document.getElementById("audioswag").innerHTML = "<source src='screaming song.mp3' type='audio/mpeg'>"
+                audioelement.setAttribute('src', 'screaming song.mp3');
                 break;
             case 3:
-                document.getElementById("audioswag").innerHTML = "<source src='showmeurbroobes.mp3' type='audio/mpeg'>"
+                audioelement.setAttribute('src', 'showmeurbroobes.mp3');
                 break;
             case 4:
-                document.getElementById("audioswag").innerHTML = "<source src='harmony.mp3' type='audio/mpeg'>"
+                audioelement.setAttribute('src', 'harmony.mp3');
                 break;
             case 5:
-                document.getElementById("audioswag").innerHTML = "<source src='zombie.mp3' type='audio/mpeg'>"
+                audioelement.setAttribute('src', 'zombie.mp3');
                 break;
             case 6:
-                document.getElementById("audioswag").innerHTML = "<source src='gaben.mp3' type='audio/mpeg'>"
+                audioelement.setAttribute('src', 'gaben.mp3');
                 break;
             case 7:
-                document.getElementById("audioswag").innerHTML = "<source src='kawaiirap.mp3' type='audio/mpeg'>"
+                audioelement.setAttribute('src', 'kawaiirap.mp3');
                 break;
         }
+        }
+        newsong();
+        audioelement.play();
         
         switch(titleswag){
             case 1:
@@ -127,6 +206,7 @@
             $("#button3").hide();
             $("#button4").hide();
             $("#button5").hide();
+            $("#button6").hide();
         });
         
         $('#button').click(function(){
@@ -226,7 +306,7 @@
                         $("body").css("background-color","yellow");
             }
             if(level >= 800){
-                $("#button4").show();
+                $("#button5").show();
             }
         });
         
@@ -251,7 +331,32 @@
                         $("body").css("background-color","yellow");
             }
             if(level >= 1600){
-                $("#button5").show();
+                $("#button6").show();
+            }
+        });
+        
+        $('#button6').click(function(){
+            level += 32;
+            document.getElementById('level').innerHTML = level;
+            num = Math.floor((Math.random() * 5) + 1);
+            switch(num){
+                case 1:
+                        $("body").css("background-color","green");
+                        break;
+                case 2:
+                        $("body").css("background-color","blue");
+                        break;
+                case 3:
+                        $("body").css("background-color","red");
+                        break;
+                case 4:
+                        $("body").css("background-color","white");
+                        break;
+                case 5:
+                        $("body").css("background-color","yellow");
+            }
+            if(level >= 3200){
+                $("#button6").show();
             }
         });
             
