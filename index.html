@@ -126,8 +126,7 @@
         var songplaying = true;
         
         $('#closepopup').click(function(){
-            $('#popup').css('opacity','0');
-            setTimeout("function(){$('#popup').remove()};",2000);
+            $('#popup').css('bottom','-999');
         });
         
         $('#newsong').click(function(){
